@@ -1,28 +1,15 @@
-const input = document.querySelector('#input')
-const button = document.querySelector('#button')
-const out = document.querySelector('#out')
 
-const mats = ['fuck', 'suck', 'bastard', 'cock', 'dick', 'beaver', 'pussy']
+let a = [121, 32, 2, -100, 4.5, 2300]
 
-button.onclick = () => {
-    var text = input.value
-    if(text) {
-        for(let i = 0; i < mats.length; i++) {
-            while (text.indexOf(mats[i]) != -1) {
-                text = text.replace(mats[i], quantity(mats[i].length))
-            }
-        }
-        out.innerHTML += text + '<br>';
-        input.value = ''
+let b = a.map(item => {
+    return item * 3
+})
+console.log(b)
 
+let c = a.filter(item => {
+    if(item % 2 == 0) {
+        return true
     }
-    
-}
+})
 
-function quantity(n) {
-    var sum = '';
-    for(let i = 0; i < n; i++) {
-        sum += '*'
-    }
-    return sum
-}
+console.log(c)
