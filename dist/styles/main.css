@@ -1,0 +1,16 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  font-size: 18px;
+  line-height: 1.22;
+}
