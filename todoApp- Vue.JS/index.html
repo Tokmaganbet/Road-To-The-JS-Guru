@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+	<div class="container" id="app">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">Todo application (by <a href="http://vk.com/tokmaganbet" target="_blank">Damir Tokmaganbet</a>)</h4>
+			</div>
+			<div class="card-body">
+				<div class="input-group" id='actionPanel1'>
+					<div class="input-group-prepend">
+						<span id="selectAllAction">
+							<button class="btn btn-outline-primary" type="button" @click="selectAll">Select all</button>
+						</span>
+					</div>
+					<input type="text" class="form-control" id='input' v-model.trim="search" @keyup.13="createTask"> 
+				</div>
+				<div id='actionPanel2'>
+					<div class="btn-group btn-block">
+						<button type='button' class='btn btn-success' id="doneAction" @click="doneSelectedTasks">Done</button>
+						<button type='button' class='btn btn-danger' id="removeAction" @click="removeSelectedTasks">Remove</button>
+					</div>
+				</div>
+			</div>
+			<ul class="list-group list-group-flush" id='list'>
+
+				<li class="list-group-item" v-for="task of todoList">
+					<div :class="{todoDone : task.done} " class="form-group form-check">
+						<input type="checkbox" v-model="task.selected" class="form-check-input" v-bind:id="task.id">
+						<label v-bind:for="task.id" class="form-check-label">{{ task.text }}</label>
+						<button class="btn btn-outline-primary" @click="done(task)">Done</button>
+						<button class="btn btn-outline-danger" @click="remove(task)">Remove</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+	<script src="index.js"></script>
+</body>
+</html>
